@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
@@ -10,7 +10,11 @@ def init():
 
 @app.route("/env", methods={"POST"})
 def log():
-    return "logado"
+    if SENHA == request.form.get("senha"):
+        return "logado"
+    else: 
+        return "não logado"
+
 
 
 if __name__ == "__main__":
